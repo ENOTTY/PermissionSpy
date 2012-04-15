@@ -88,6 +88,7 @@ public class PermissionSpyActivity extends Activity {
         	}
         	if (children.isEmpty()) {
         		Map<String, String> tmp = new HashMap<String, String>(1);
+        		tmp.put(PERM, "(none)");
         		children.add(tmp);
         	}
         	childData.add(children);
