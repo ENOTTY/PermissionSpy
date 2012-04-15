@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import android.app.Activity;
 import android.content.pm.PackageInfo;
@@ -20,10 +22,10 @@ public class PermissionSpyActivity extends Activity {
 	
 	public static final String TAG = "PermissionSpyActivity";
 	
-	// Map of package names to permissions
+	// Map of package names to permissions -- use sorted map to give us alphabetizing in UI
 	// XXX package names are not unique identifiers of apps...
-	final Map<String, List<String>> pkgPerms =
-			new HashMap<String, List<String>>();
+	final SortedMap<String, List<String>> pkgPerms =
+			new TreeMap<String, List<String>>();
 	
     private static final String PKG_NAME = "PKG_NAME";
     private static final String PERM = "PERM";
