@@ -60,12 +60,17 @@ public class PermissionSpyActivity extends Activity {
         		
        		// package has permissions
         	} else {
+        		if (pkgPerms.get(pkg.packageName) != null) {
+        			Log.e(TAG, pkg.packageName + " appears multiple times!");
+        		}
         		pkgPerms.put(pkg.packageName, Arrays.asList(pkg.requestedPermissions));
         		/* I can't use pkgPerms.put(pkg.requestedPermissions)
         		 * because if pkg.requestedPermissions is null, then
         		 * Arrays.asList(null) throws a NullPointerException.
         		 */
         	}
+        	
+        	Log.v(TAG, pkg.packageName + ":" + pkgPerms.get(pkg.packageName));
         }
         
         /* Set up the UI adapter */
@@ -100,7 +105,7 @@ public class PermissionSpyActivity extends Activity {
         mAdapter = new SimpleExpandableListAdapter(
                 this,
                 groupData,
-                R.layout.expandable_list_item_1_small,
+                R.layout.expandable_list_item_1_medium,
                 new String[] { PKG_NAME },
                 new int[] { android.R.id.text1 },
                 childData,
